@@ -1,2 +1,2 @@
 # BurgerBuilder
-https://georgi-chinov.github.io/burgerBuilder/
+https://georgi-chinov.github.io/BurgerBuilder/
