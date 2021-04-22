@@ -1,6 +1,5 @@
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
-import { secrets } from "./secrets";
 
 export const authStart = () => {
   return {
@@ -46,12 +45,10 @@ export const auth = (email, password, isSignup) => {
       returnSecureToken: true,
     };
     let defultURL =
-      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" +
-      secrets.FIREBASE_API_KEY;
+      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAJqrPgwL53hlmb4fMKHB6b3K3yVJFdm7Q";
     if (!isSignup) {
       defultURL =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
-        secrets.FIREBASE_API_KEY;
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAJqrPgwL53hlmb4fMKHB6b3K3yVJFdm7Q";
     }
     axios
       .post(defultURL, authData)
