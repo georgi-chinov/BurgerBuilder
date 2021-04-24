@@ -62,13 +62,7 @@ export const fetchOrders = (token, userId) => {
   return (dispatch) => {
     dispatch(fetchOrdersStart());
     axios
-      .get("/orders.json?", {
-        params: {
-          auth: token,
-          orderBy: '"userId"',
-          equalTo: '"' + userId + '"',
-        },
-      })
+      .get(`/orders.json?auth=${token}&orderBy="userId"&equalTo="${userId}"`)
       .then((res) => {
         const fetchedOrders = [];
         for (let key in res.data) {
@@ -78,7 +72,18 @@ export const fetchOrders = (token, userId) => {
       })
       .catch((err) => {
         dispatch(fetchOrdersFailed(err));
-        // this.setState({ loading: false });
       });
+  };
+};
+
+export const deleteOrder = (orderID, token, userID) => {
+  return (dispatch) => {
+    axios
+      .delete(`/orders/${orderID}.json?auth=${token}`)
+      .then(() => {
+        // console.log(resp);
+        dispatch(fetchOrders(token, userID));
+      })
+      .catch((err) => err);
   };
 };
